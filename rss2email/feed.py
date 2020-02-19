@@ -36,7 +36,7 @@ from email.mime.message import MIMEMessage as _MIMEMessage
 from email.mime.multipart import MIMEMultipart as _MIMEMultipart
 from email.utils import formataddr as _formataddr
 import hashlib as _hashlib
-import html.parser as _html_parser
+import html as _html
 import re as _re
 import socket as _socket
 import time as _time
@@ -599,7 +599,7 @@ class Feed (object):
         if 'name' in feed.get('publisher_detail', []):
             data['publisher'] = feed.publisher_detail.name
         name = self.name_format.format(**data)
-        return _html2text.unescape(name)
+        return _html.unescape(name)
 
     def _validate_email(self, email, default=None):
         """Do a basic quality check on email address
